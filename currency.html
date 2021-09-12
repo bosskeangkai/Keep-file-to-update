@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Currency</title>
+
+        <script>
+
+            // document.addEventListener('DOMContendLoaded', function() {
+            //     document.querySelector('form').onsubmit = () => {
+            //          // fetch api data
+            //         fetch('http://api.exchangeratesapi.io/v1/latest?access_key=82e6fc57d748a94d390b175b1655384a')
+            //             // get response
+            //             .then(response => response.json())
+
+            //             // using data from 
+            //             .then(data => {
+            //                 console.log(data)
+            //                 const currency = document.querySelector('#currency').value.toUpperCase();
+            //                 const rate = data.rates[currency];
+            //                 if (rate !== undefined) {
+            //                     document.querySelector('#result').innerHTML = `1 EUR is equal to ${rate.toFixed(3)} EUR.`
+            //                     console.log(rate)
+            //                 }
+            //                 else {
+            //                     document.querySelector('#result').innerHTML = 'Invalid currency.';
+            //                 }
+            //             })
+            //             .catch(error => {
+            //                 console.log('Error:', error);
+            //             });
+                        
+            //     }
+            //             return false;
+            //     // }
+            // })
+
+            document.addEventListener('DOMContentLoaded', function(){
+                fetch('http://api.exchangeratesapi.io/v1/latest?access_key=82e6fc57d748a94d390b175b1655384a')
+
+                .then(response => {
+                    return response.json();
+                })
+
+                .then(data => {
+                    console.log(data);
+                })
+            })
+        </script>
+    </head>
+
+    <body>
+        <h1>Currency Exchange based on EUR</h1>
+        <form>
+            <input type="text" name="currency" id="currency" placeholder="currency name">
+            <input type="submit" name="convert" id="convert" value="convert">
+            <div id="result">
+                <!-- I gonna add some text with innerHTML -->
+            </div>
+            <h5 style="color: darkgrey;">This is the result of Currency Rate based on EUR</h5>
+        </form>
+
+    </body>
+</html>

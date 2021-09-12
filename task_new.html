@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Task</title>
+
+        <!-- JavaScript -->
+        <script>
+            // logic process
+            // DOMContentLoaded had finished loaded document
+
+            document.addEventListener('DOMContentLoaded',() => {
+
+                // By Default, submit disable
+                document.querySelector('#submit').disabled = true;
+
+                document.querySelector('#task').onkeyup = () => {
+                    
+                    if(document.querySelector('#task').value.length > 0) {
+                        document.querySelector('#submit').disabled = false;
+                    } else{
+                        document.querySelector('#submit').disabled = true;
+                    }
+                }
+
+                document.querySelector('form').onsubmit = () => {
+                    const task = document.querySelector('#task').value
+
+                    // create the element from value of task
+                    const li = document.createElement('li');
+                    li.innerHTML = task;
+
+                    // show the list of item to unordered list
+                    document.querySelector('#tasks').append(li);
+
+                    // clear the task input name
+                    document.querySelector('#task').value = '';
+                    document.querySelector('#submit').disabled = true;
+
+                    // if we are not return false then the value will not showed on the screen
+                    return false;
+                }
+            })
+        </script>
+    </head>
+
+    <body>
+        <h1>Hello please type something</h1>
+        <ul id="tasks" style="list-style-type: none;">
+        </ul>
+        <form>
+            <input id="task" type="text" placeholder="New task"  autofocus>
+            <input type="submit" id="submit">
+        </form>
+    </body>
+</html>
